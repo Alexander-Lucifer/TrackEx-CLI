@@ -4,5 +4,5 @@
 
 # Documentation
 ## Requirements
--MySQL
--Make Sure your system has Python 3.10 or above
+1. MySQL
+2. Make Sure your system has Python 3.10 or above
