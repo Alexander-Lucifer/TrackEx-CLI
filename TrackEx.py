@@ -5,6 +5,7 @@ import os
 from time import sleep
 import tabulate
 import datetime
+import flask
 
 def clear():
     if system() == "Windows":
@@ -12,7 +13,6 @@ def clear():
     elif system() == "Linux":
         os.system("clear")
 
-#data = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*_;:1234567890"
 # Function to connect to MySQL database
 def connect_to_database():
     try:
@@ -58,11 +58,6 @@ def create_account_table(cursor):
         )
     """)
 
-def Keygen(data):
-    x = ""
-    for i in range(0,17):
-        x += choice(data)
-    return x
 
 #Signup
 def add_user(cursor, name, Pass, Key):
@@ -115,15 +110,6 @@ def Auth(cursor, name, Pass):
     user = cursor.fetchone()
 
     return user is not None
-
-#Key Auth
-def keyauth(cursor, name, Pass):
-    query = "select PassKey from ACC where UserName = %s and PassWord = %s"
-    val = (name, Pass)
-    cursor.execute(query, val)
-    Ckey = cursor.fetchone()
-
-    return Ckey
 
 # Function to add an expense
 def add_expense(cursor, name, description, amount, date):
